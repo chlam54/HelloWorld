@@ -1,4 +1,4 @@
-# HelloWorld
+# LuckyDraw
 ############
 
-Hi, nice to meet you in this world!
+git of lucky draw phonegap application
