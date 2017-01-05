@@ -9,7 +9,4 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
-		<platform name="ios">
-			<preference name="Orientation" value="all" />
-		</platform>
 </widget>
