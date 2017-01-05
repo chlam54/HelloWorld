@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap-theme.min.css" />
+		<title>HKBEA Lucky Draw</title>
+</head>
+<body>
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		<div class="container-fluid">
+
+		<div class="row top-buffer">
+		<div class="col-sm-2"><img src="img/logo.gif" alt=""></div>
+		</div>
+		<div class="row top-buffer">
+		<div class="rainbowBg" style="width: 100%;"></div>
+		</div>
+		<div class="row top-buffer">
+		<img class="luckyDrawPointer center-block" src="img/pointer.png" alt="">
+		<img class="luckyDrawPanel img-responsive center-block top-buffer" src="img/turntable.png" onclick="javascript:draw()" alt="">
+		</div>
+		<br><br>
+	  <!-- Trigger the modal with a button -->
+	  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Setting</button>
+
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+	    <div class="modal-dialog">
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Config Setting</h4>
+	        </div>
+	        <div class="modal-body">
+						<label for="stock1">Stock 1:</label>
+						<input type="text" id="stock1" value="18"><br>
+						<label for="stock2">Stock 2:</label>
+						<input type="text" id="stock2" value="18"><br>
+						<label for="stock3">Stock 3:</label>
+						<input type="text" id="stock3" value="18"><br>
+						<label for="stock4">Stock 4:</label>
+						<input type="text" id="stock4" value="18"><br>
+						<label for="stock5">Stock 5:</label>
+						<input type="text" id="stock5" value="18"><br>
+						<label for="stock6">Stock 6:</label>
+						<input type="text" id="stock6" value="18"><br>
+						<label for="stock7">Stock 7:</label>
+						<input type="text" id="stock7" value="18"><br>
+						<label for="stock8">Stock 8:</label>
+						<input type="text" id="stock8" value="18"><br><br>
+						<button type="button" class="btn btn-warning" onclick="javascript:updateAllStocks();">Update</button>
+	        </div>
+	      </div>
+
+	    </div>
+	  </div>
+	</div>
+</body>
+</html>
