@@ -4,13 +4,13 @@ $.fn.animateRotate = function(angle, duration, easing, complete) {
         rotateY: 0,
         rotateZ: 0
     }, $.type(angle) === 'object' ? angle : {rotateZ: angle});
-    
+
     var args = $.speed(duration, easing, complete);
     var step = args.step;
     return this.each(function(i, e) {
-        
+
         var domObj = this;
-        
+
         // set context for all callbacks
         var callbacks = ['progress', 'complete', 'start', 'done', 'fail', 'always'];
         $.each(callbacks, function(index, value) {
@@ -21,13 +21,13 @@ $.fn.animateRotate = function(angle, duration, easing, complete) {
                 };
             }
         });
-            
+
         // when setting 'transform', all values get replaced
         // save all properties so they don't get overwritten
         var rotateX = 0,
             rotateY = 0,
             rotateZ = 0;
-        
+
         args.step = function(now, fx) {
             switch (fx.prop) {
                 case 'rotateX':
@@ -40,13 +40,13 @@ $.fn.animateRotate = function(angle, duration, easing, complete) {
                     rotateZ = now;
                     break;
             }
-            $.style(e, 'transform', 
+            $.style(e, 'transform',
                     'rotateX(' + rotateX + 'deg) ' +
                     'rotateY(' + rotateY + 'deg) ' +
                     'rotateZ(' + rotateZ + 'deg)');
             if (step) return step.apply(domObj, arguments);
         };
-        
+
         $({
             rotateZ: 0,
             rotateX: 0,
@@ -68,8 +68,8 @@ function updateAllStocks(){
 	}
 }
 
+var degSet = [360, 315, 270, 225, 180, 135, 90, 45];
 function availableDegByStock(){
-	var degSet = [340, 295, 250, 205, 160, 115, 70, 25];	
 	var removeValFromIndex = [];
 	for(var i=1;i<=9;i++){
 			if(window.localStorage.getItem("stock" + i) <= 0)
@@ -84,7 +84,7 @@ function draw(){
 	if(degSet.length > 0){
 		var randIndex = Math.floor(Math.random() * degSet.length)
 		var randDeg = degSet[randIndex];
-		
+
 		var rotatePower = 1440;
 		var duration = 1500;
 		$(".luckyDrawPanel").animateRotate(randDeg + rotatePower, duration, "linear", function() {
@@ -98,7 +98,6 @@ function draw(){
 	}
 }
 function updateDisplay(randDeg){
-	var degSet = [340, 295, 250, 205, 160, 115, 70, 25];
 	for(var i=1;i<=9;i++){
 		if(degSet[i-1] == randDeg)
 			$("#stock" + i).val(window.localStorage.getItem("stock" + i) - 1);
