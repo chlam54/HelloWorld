@@ -98,6 +98,10 @@ function draw(){
 		//update stock display & storage
 		updateDisplay(randDeg);
 		updateAllStocks();
+    setTimeout(function(){
+      $("#giftModal" + getGiftIndex(randDeg)).modal();
+    }, duration);
+
 	} else{
 		alert("No available stocks");
 	}
@@ -108,4 +112,16 @@ function updateDisplay(randDeg){
 		if(degSet[i-1] == randDeg || degSet[(i+4)-1] == randDeg)
 			$("#stock" + i).val(window.localStorage.getItem("stock" + i) - 1);
 	}
+}
+function getGiftIndex(deg){
+  var degSet = [360, 315, 270, 225, 180, 135, 90, 45];
+  var index = 0;
+  for(var i=0;i<degSet.length;i++){
+    if(deg == degSet[i]){
+      index = (i+1)%4;
+    }
+  }
+  if(index ==0)
+    index = 4;
+  return index;
 }

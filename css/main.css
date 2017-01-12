@@ -11,7 +11,7 @@
 .luckyDrawPointer {
     position: absolute;
     z-index: 2;
-    top: 20%;
+    top: 23%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
