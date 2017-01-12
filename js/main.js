@@ -55,26 +55,31 @@ $.fn.animateRotate = function(angle, duration, easing, complete) {
     });
 };
 $(function() {
-	for(var i=1;i<=9;i++){
+  //init storage
+	for(var i=1;i<5;i++){
 		if(window.localStorage.getItem("stock" + i) != null)
 			$("#stock" + i).val(window.localStorage.getItem("stock" + i));
 		else
 			window.localStorage.setItem("stock" + i, $("#stock" + i).val());
 	}
 });
+
 function updateAllStocks(){
-	for(var i=1;i<=9;i++){
+	for(var i=1;i<5;i++){
 		window.localStorage.setItem("stock" + i, $("#stock" + i).val());
 	}
 }
 
-var degSet = [360, 315, 270, 225, 180, 135, 90, 45];
 function availableDegByStock(){
+  var degSet = [360, 315, 270, 225, 180, 135, 90, 45];
 	var removeValFromIndex = [];
-	for(var i=1;i<=9;i++){
-			if(window.localStorage.getItem("stock" + i) <= 0)
-				removeValFromIndex.push(i-1);
+	for(var i=1;i<5;i++){
+			if(window.localStorage.getItem("stock" + i) <= 0){
+        removeValFromIndex.push((i+4)-1);
+        removeValFromIndex.push(i-1);
+      }
 	}
+  removeValFromIndex.sort();
 	for (var i = removeValFromIndex.length -1; i >= 0; i--)
 		degSet.splice(removeValFromIndex[i],1);
 	return degSet;
@@ -98,8 +103,9 @@ function draw(){
 	}
 }
 function updateDisplay(randDeg){
-	for(var i=1;i<=9;i++){
-		if(degSet[i-1] == randDeg)
+  var degSet = [360, 315, 270, 225, 180, 135, 90, 45];
+  for(var i=1;i<5;i++){
+		if(degSet[i-1] == randDeg || degSet[(i+4)-1] == randDeg)
 			$("#stock" + i).val(window.localStorage.getItem("stock" + i) - 1);
 	}
 }
