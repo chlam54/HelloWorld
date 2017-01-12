@@ -100,7 +100,7 @@ function draw(){
 		updateAllStocks();
     setTimeout(function(){
       $("#giftModal" + getGiftIndex(randDeg)).modal();
-    }, duration);
+    }, duration+500);
 
 	} else{
 		alert("No available stocks");
