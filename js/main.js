@@ -84,27 +84,34 @@ function availableDegByStock(){
 		degSet.splice(removeValFromIndex[i],1);
 	return degSet;
 }
+var drawFlag = false;
 function draw(){
-	var degSet = availableDegByStock();
-	if(degSet.length > 0){
-		var randIndex = Math.floor(Math.random() * degSet.length)
-		var randDeg = degSet[randIndex];
+  if(!drawFlag){
+    drawFlag = true;
+  	var degSet = availableDegByStock();
+  	if(degSet.length > 0){
+  		var randIndex = Math.floor(Math.random() * degSet.length)
+  		var randDeg = degSet[randIndex];
 
-		var rotatePower = 1440;
-		var duration = 1500;
-		$(".luckyDrawPanel").animateRotate(randDeg + rotatePower, duration, "linear", function() {
-			console.log(this); //this is now the correct DOM node
-		});
-		//update stock display & storage
-		updateDisplay(randDeg);
-		updateAllStocks();
-    setTimeout(function(){
-      $("#giftModal" + getGiftIndex(randDeg)).modal();
-    }, duration+500);
-
-	} else{
-		alert("No available stocks");
-	}
+  		var rotatePower = 1440;
+  		var duration = 1500;
+  		$(".luckyDrawPanel").animateRotate(randDeg + rotatePower, duration, "linear", function() {
+  			console.log(this); //this is now the correct DOM node
+  		});
+  		//update stock display & storage
+  		updateDisplay(randDeg);
+  		updateAllStocks();
+      setTimeout(function(){
+        $("#giftModal" + getGiftIndex(randDeg)).modal();
+        drawFlag=false;
+      }, duration+500);
+  	} else{
+  		alert("No available stocks");
+      drawFlag=false;
+    }
+  }else {
+    return false;
+  }
 }
 function updateDisplay(randDeg){
   var degSet = [360, 315, 270, 225, 180, 135, 90, 45];
