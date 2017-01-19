@@ -62,6 +62,12 @@ $(function() {
 		else
 			window.localStorage.setItem("stock" + i, $("#stock" + i).val());
 	}
+	
+	$(".luckyDrawPanel").click(function() {
+	  for(var i=1;i<5;i++){
+	  $("#g"+i).text($("#stock"+i).val());
+	  }
+	});
 });
 
 function updateAllStocks(){
